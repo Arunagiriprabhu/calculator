@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="/index.css">
+
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    height: 100vh;
+    background-color: rgb(171, 171, 121);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+#calculator{
+    padding: 15px;
+    background-color: rgb(236, 230, 170);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: grid;
+    grid-template-columns: repeat(4,70px);
+}
+input{
+    font-size: 50px;
+    background-color: rgb(244, 231, 148);
+    text-align: end;
+    grid-column: span 4;
+    height: 70px;
+    width: 270px;
+    justify-content: center;
+    border-radius: 20px;
+    border: none;
+    box-shadow: rgb(109, 112, 114) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+button{
+    font-size: 15px;
+    background-color: rgb(236, 230, 170);
+    font-weight: 900;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    gap: 50px;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.376);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+:hover{
+    color: rgb(9, 9, 9);
+    cursor: pointer;
+}
+#eql{
+  width: 120px;
+  height: 60px;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+</style>
+<body>
+    <div id="container">
+        <div id="calculator">
+        <input type="text" placeholder="0" id="output">
+        <button onclick="cl()">CL</button>
+        <button onclick="del()">DEL</button>
+        <button onclick="display('%')">%</button>
+        <button onclick="display('/')">/</button>
+        <button onclick="display('7')">7</button>
+        <button onclick="display('8')">8</button>
+        <button onclick="display('9')">9</button>
+        <button onclick="display('*')">*</button>
+        <button onclick="display('4')">4</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('-')">-</button>
+        <button onclick="display('1')">1</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('+')">+</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="display('0')">0</button>
+        <button onclick="calculate('=')" id="eql">=</button>
+        
+        </div>
+    </div>
+</body>
+<script>
+      const outputscreen=document.getElementById("output");
+      function display(value){
+        outputscreen.value += value;    
+      }
+     
+      function del(){
+        outputscreen.value = outputscreen.value.slice(0, -1);
+      }
+      function calculate(){
+        try{
+            outputscreen.value=eval(outputscreen.value);
+        }
+        catch(err){
+            alert("  invaild")
+        }
+      }
+      function cl(){
+        outputscreen.value = "0";
+      }
+</script>
+</html>
